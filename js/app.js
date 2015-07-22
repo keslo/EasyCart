@@ -1,4 +1,4 @@
-var Cart = function() {
+(function() {
 	var itemBoxClass = 'item_box';
 	var cartContainId = 'cart_content';
 	var itemLockStorName = 'cart';
@@ -8,6 +8,7 @@ var Cart = function() {
 	var itemTitleClass = 'item_title';
 	// класс с ценой товара
 	var itemPriceClass = 'item_price';
+	var checkoutId = 'checkout';
 
 	/* Вспомогательные функции */
 
@@ -35,6 +36,7 @@ var Cart = function() {
 		return false;
 	};
 
+	/* добавяем товар в Корзину */
 	function addToCart(el) {
 		// блокируем кнопку на время операции с корзиной
 		this.disabled = true;
@@ -63,5 +65,20 @@ var Cart = function() {
 			this.disabled = false;
 		}
 		return false;
-	}
-}
+	};
+
+	/* удаляем товар из Корзины */
+	function deleteItemCart() {
+		// ссылка на атрибут id в строке товара в table : this > td > tr
+		var id = this.parentNode.parentNode.getAttribute('data_id');
+		// получаем список товара
+		var cartData = getCartData() || {};
+		// удаляем товар
+		delete cartData[id];
+		// отправляем изменения в LocalStorage
+		setCartData(cartData);
+		// имитируем событие "оформить заказ"
+		document.getElementById(checkoutId).click();
+	};
+
+}());
