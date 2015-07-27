@@ -71,7 +71,6 @@ window.onload = function() {
 		console.log('Товар добавлен');
 
 		var contain = document.getElementById(cartContainId);
-		console.log(contain.className);
 		openCart();
 		if (contain.className !== 'animated bounceInLeft') {
 			contain.className = 'animated bounceInLeft';
@@ -119,7 +118,7 @@ window.onload = function() {
 
 		// еслик корзина не пуста, то формируем html вывод
 		if (cartData !== null) {
-			totalItem = '<table class="shopping_list"><tr><th>Наименование</th><th>Цена</th><th>Кол-во</th></tr>';
+			totalItem = '<table class="shopping_list table"><tr><th>Наименование</th><th>Цена</th><th>Кол-во</th><th></th></tr>';
 			for (item in cartData) {
 				// добавляем в tr в data-id номер товара
 				totalItem += '<tr data-id=' +item+ '>';
@@ -128,7 +127,7 @@ window.onload = function() {
 					totalItem += '<td>' +cartData[item][i]+ '</td>';
 				};
 				// добавляем кнопку "Удалить..."
-				totalItem += '<td><button class="delete_item">Удалить товар</button></td>';
+				totalItem += '<td><button class="delete_item btn btn-danger">Удалить</button></td>';
 				totalItem += '</tr>';
 			}
 			totalItem += '</table>';
