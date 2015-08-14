@@ -1,3 +1,15 @@
+/*
+::::::::::::::::::::::::::::::::::::::::
+ Snippet name: easyCartModx
+ Short Desc: builds shoping cart for site on MODX
+ Version: 0.1
+ Authors: 
+	Anton Kolesnikov (info@kanby.ru)
+ Date: July 14, 2015
+::::::::::::::::::::::::::::::::::::::::
+*/
+
+
 window.onload = function() {
 	
 	/* инициализация таблицы-прайса
@@ -11,7 +23,7 @@ window.onload = function() {
 
 	// проверяем наличие прайса на странице
 	function priceOnPage(){
-		if (document.getElementsByTagName('table') !== undefined) {
+		if (document.getElementsByTagName('table') === 0) {
 			var tables = document.getElementsByTagName('table');
 
 			for (var i=0, tablesLength = tables.length; i<tablesLength; i++) {
@@ -83,7 +95,7 @@ window.onload = function() {
 		};	
 	};
 
-	// проверка объета на пустоту
+	// проверка объекта на пустоту
 	function isEmpty(obj) {
 		var count = 0;
 		for (var key in obj) {
