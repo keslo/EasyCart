@@ -1,0 +1,47 @@
+<!-- Здесь представлен пример HTML кода для вставки в качестве чанка -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="assets/templates/legionparts_v1/chunk/cart.js"></script>
+<link href ="assets/templates/legionparts_v1/chunk/cart.css" rel="stylesheet" type="text/css">
+
+<!-- Корзина покупок -->
+<div id="cart_content"></div>
+
+<!-- Мини Корзина -->
+<div id="mini_cart">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn btn-group">
+					<ul class="nav nav-pills">
+						<li role="presentation" class="active">
+							<button class="btn btn-primary" type="button" id="btn-cart-modal" data-toggle="modal" data-target="#cartModal">
+								<i class="fa fa-shopping-cart"></i>
+								Товаров в корзине:
+								<span id="count" class="badge">0</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Модальное окно корзины -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Бланк заказа</h4>
+            </div>
+                <div id="myModal_form">
+                    [[eForm? &formid=`cart_modal` &tpl=`tpl_modal_cart` &report=`report_modal_cart` &subject=`Заказ запчастей [(site_name)]` &to='achallenge@yandex.ru,legion-parts@bk.ru' &allowhtml=`1` ]]
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
