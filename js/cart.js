@@ -23,7 +23,7 @@ window.onload = function() {
 
 	// проверяем наличие прайса на странице
 	function priceOnPage(){
-		if (document.getElementsByTagName('table') === 0) {
+		if (document.getElementsByTagName('table').lenght === 0) {
 			var tables = document.getElementsByTagName('table');
 
 			for (var i=0, tablesLength = tables.length; i<tablesLength; i++) {
