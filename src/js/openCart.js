@@ -1,4 +1,7 @@
 function openCart() {
+
+	var getCartData = require('./getCartData.js');
+
 	var $data = getCartData();
 
 	var $output = '<table class="table"><tr><td>Наименование</td><td>Цена</td><td>Кол-во</td><td></td></tr><tr>';

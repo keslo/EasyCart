@@ -1,6 +1,6 @@
 
 $(document).ready( function() {
-	require('./getCartData.js');
+	var getCartData = require('./getCartData.js');
 	var addToCart = require('./addToCart.js');
 	var deleteItem = require('./deleteItem');
 	var miniOpenCart = require('./miniOpenCart.js');

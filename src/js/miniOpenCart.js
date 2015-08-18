@@ -1,4 +1,7 @@
 function miniOpenCart() {
+
+	var getCartData = require('./getCartData.js');
+
 	var $items = getCartData();
 	var $count = 0;
 	

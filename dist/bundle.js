@@ -46,11 +46,11 @@
 
 	
 	$(document).ready( function() {
-		__webpack_require__(1);
+		var getCartData = __webpack_require__(1);
 		var addToCart = __webpack_require__(2);
-		var deleteItem = __webpack_require__(3);
-		var miniOpenCart = __webpack_require__(4);
-		var openCart = __webpack_require__(5);
+		var deleteItem = __webpack_require__(5);
+		var miniOpenCart = __webpack_require__(3);
+		var openCart = __webpack_require__(4);
 		var isEmpty = __webpack_require__(6);
 
 		__webpack_require__(7);
@@ -105,14 +105,18 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	function addToCart(e){
+
+		var getCartData = __webpack_require__(1);
+		var miniOpenCart = __webpack_require__(3);
+		var openCart = __webpack_require__(4);
+
 		this.disabled = true;
 		var $cartData = getCartData() || {};
 
 		var $parentRow = $(this).parent().parent();
-		console.log($(this), $(this).parent(), $(this).parent().parent());
 		var $itemId = $parentRow.attr('data-id');
 		var $itemTitle = $parentRow.find('.item-title').html();
 		var $itemPrice = $parentRow.find('.item-price').html();
@@ -136,30 +140,12 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
-
-	function deleteItem() {
-		var $cartData = getCartData();
-		var $itemId = $(this).parent().parent().attr('data-id');
-
-		delete $cartData[$itemId];
-
-		getCartData($cartData);
-		openCart();
-
-		if (isEmpty($cartData)) {
-			$('#mini_cart').css('visibility','hidden').removeClass('fadeIn');
-			$('#cartModal').modal('hide')
-		}
-	};
-
-	module.exports = deleteItem;
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	function miniOpenCart() {
+
+		var getCartData = __webpack_require__(1);
+
 		var $items = getCartData();
 		var $count = 0;
 		
@@ -174,10 +160,13 @@
 	module.exports = miniOpenCart;
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
 
 	function openCart() {
+
+		var getCartData = __webpack_require__(1);
+
 		var $data = getCartData();
 
 		var $output = '<table class="table"><tr><td>Наименование</td><td>Цена</td><td>Кол-во</td><td></td></tr><tr>';
@@ -220,6 +209,27 @@
 	};
 
 	module.exports = openCart;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	function deleteItem() {
+		var $cartData = getCartData();
+		var $itemId = $(this).parent().parent().attr('data-id');
+
+		delete $cartData[$itemId];
+
+		getCartData($cartData);
+		openCart();
+
+		if (isEmpty($cartData)) {
+			$('#mini_cart').css('visibility','hidden').removeClass('fadeIn');
+			$('#cartModal').modal('hide')
+		}
+	};
+
+	module.exports = deleteItem;
 
 /***/ },
 /* 6 */
